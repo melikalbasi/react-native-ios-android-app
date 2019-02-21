@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
+import placeImage from './src/assets/paris.jpg';
 
 export default class App extends Component {
 
@@ -14,8 +15,9 @@ export default class App extends Component {
     this.setState(prevState => {
       return {
         places: prevState.places.concat({
-          key: Math.random(),
-          value: placeName
+          key: `${Math.random()}`,
+          name: placeName,
+          image: placeImage
         })
       };
     });
