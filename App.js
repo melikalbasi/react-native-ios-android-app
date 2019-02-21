@@ -17,9 +17,7 @@ export default class App extends Component {
         places: prevState.places.concat({
           key: `${Math.random()}`,
           name: placeName,
-          image: {
-            uri: 'https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/7845/SITours/eiffel-tower-summit-priority-access-with-host-in-paris-604656.jpg'
-          }
+          image: placeImage
         })
       };
     });
