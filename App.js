@@ -1,56 +1,28 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
-import ListItem from './src/components/ListItem/ListItem';
-
+import PlaceInput from './src/components/PlaceInput/PlaceInput';
+import PlaceList from './src/components/PlaceList/PlaceList';
 
 export default class App extends Component {
 
   state = {
-    placeName: "",
     places: []
   };
 
-  placeNameChangedHandler = val => {
-    this.setState({
-      placeName: val
-    });
-  };
-
-  placeSubmitHandler = () => {
-    if (this.state.placeName.trim() === "") {
-      return;
-    }
-    
+  placeAddedHandler = placeName => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(prevState.placeName)
+        places: prevState.places.concat(placeName)
       };
     });
   };
 
   render() {
-    const placesOutput = this.state.places.map((place, i) => (
-      <ListItem key={i} placeName={place} />
-    ));
     return (
       <View style={styles.container}>
-        <View style={styles.innerContainer}>
-          <TextInput
-            style={styles.placeInput}
-            placeholder="Places You Want To Go"
-            value={this.state.placeName}
-            onChangeText={this.placeNameChangedHandler}
-          />
-          <Button 
-          title="Add" 
-          style={styles.placeButton} 
-          onPress={this.placeSubmitHandler}
-          />
-        </View>
-        <View style={styles.listContainer}>
-          {placesOutput}
-        </View>
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceList places={this.state.places} />
       </View>
     );
   }
@@ -63,20 +35,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start"
-  },
-  innerContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  placeInput: {
-    width: "70%"
-  },
-  placeButton: {
-    width: "30%"
-  },
-  listContainer: {
-    width: "100%"
   }
 });
