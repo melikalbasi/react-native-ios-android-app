@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
 import placeImage from './src/assets/paris.jpg';
-import PlaceDetail from '.src/components/PlaceDetail/PlaceDetail'
+import PlaceDetail from './src/components/PlaceDetail/PlaceDetail'
 
 export default class App extends Component {
 
